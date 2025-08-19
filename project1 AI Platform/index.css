@@ -1,0 +1,98 @@
+    body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #f0f0f0, #ffffff);
+            
+        }
+        header{
+            background: linear-gradient(135deg,#42254b,#a556dd);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .logo i {
+            font-size: 30px;
+            color: #fff;
+        }
+        nav {
+            position: relative;
+            border-radius: 30px;
+        }
+        ul {
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            border: none;
+        }
+        li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        li a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        h1{
+
+            margin: 50px;
+            color: #0a0a0a;
+        }
+        .hero{
+            text-decoration: none;
+            color: #fff;
+            background-color: #79489c;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin: 0px 20px;
+        }
+        #hero{
+            margin-top: 0px;
+            height: 250px;
+            padding: 0px;
+            background:linear-gradient(135deg, #f8e1ff, #a556dd);
+        }
+        @media (max-width: 780px) {
+            ul {
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                background: #79489c;
+                width: 180px;
+                display: none;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                border-radius: 20px;
+                padding: 20px;
+            }
+            
+            ul.active {
+                display: flex;
+            }
+           
+            .menu-toggle {
+                display: block;
+            }
+        }
