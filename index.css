@@ -1,4 +1,4 @@
-        body{
+body{
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(90deg, #f0f0f0, #ffffff);
@@ -75,20 +75,42 @@
             background:linear-gradient(135deg, #f8e1ff, #a556dd);
         }
         div p {
-            
-            border: #0a0a0a 1px solid;
+            display: inline-block; 
             text-align: center;
             padding: 20px;
+            margin: 20px;
+            border: #0a0a0a 1px solid;
         }
         div h4{
             display: inline;
         }
-        .why{
+        .why {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-content: space-around;
+            gap: 2rem;
+            justify-content: center;
+            align-items: flex-start;
             flex-wrap: wrap;
+        }
+        .test {
+            width: 220px; /* Fixed card width for consistency */
+            min-width: 180px;
+            max-width: 100%;
+            margin: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .test img {
+            width: 180px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .test:hover{
+            background-color: #f0f0f0;
+            box-shadow: 10px  12px rgba(0,0,0,0.1);
         }
         .divs {
             
@@ -97,10 +119,35 @@
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        i{
-            background-color: #79489c;
+        .fa-bolt ,.fa-palette, .fa-robot ,.fa-video, .fa-comment,.fa-image,.fa-headphones{  
             padding: 10px;
             border-radius: 50%;
+        }
+        .fa-palette{
+            background-color: #af2798;
+        }
+        .fa-robot{
+            background-color: #5e33c2;
+        }
+        .fa-bolt{
+            background-color: #7d1086;
+        }
+        .fa-headphones{
+            background-color: #a556dd;
+        }
+        .fa-image{
+            background-color: #79489c;
+        }
+        .fa-video{
+            background-color: #6b2c8f;
+        }
+        .fa-comment{
+            background-color: #9c4fbb;
+        }
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
         @media (max-width: 780px) {
             ul {
@@ -122,5 +169,18 @@
            
             .menu-toggle {
                 display: block;
+            }
+            .why {
+                flex-direction: column;
+                align-items: center;
+            }
+            .test {
+                width: 90vw;
+                min-width: unset;
+                margin: 10px 0;
+            }
+            .test img {
+                width: 80vw;
+                height: auto;
             }
         }
