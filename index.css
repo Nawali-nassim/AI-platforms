@@ -4,7 +4,7 @@ body{
             background: linear-gradient(90deg, #f0f0f0, #ffffff);
             
         }
-        header{
+        header,footer{
             background: linear-gradient(135deg,#42254b,#a556dd);
             display: flex;
             align-items: center;
@@ -23,11 +23,11 @@ body{
             font-size: 30px;
             color: #fff;
         }
-        nav {
+       header nav {
             position: relative;
             border-radius: 30px;
         }
-        ul {
+       header ul {
             display: flex;
             gap: 15px;
             margin: 0;
@@ -79,7 +79,8 @@ body{
             text-align: center;
             padding: 20px;
             margin: 20px;
-            border: #0a0a0a 1px solid;
+
+            
         }
         div h4{
             display: inline;
@@ -101,11 +102,14 @@ body{
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
+            border-radius: 30px;
+            
+
         }
         .test img {
             width: 180px;
             height: 110px;
-            object-fit: cover;
+            object-fit: cover;/*this will ensure the image covers the area without stretching*/
             border-radius: 10px;
         }
         .test:hover{
@@ -119,9 +123,21 @@ body{
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .fa-bolt ,.fa-palette, .fa-robot ,.fa-video, .fa-comment,.fa-image,.fa-headphones{  
+        .fa-bolt ,.fa-palette,.fa-diagram-project, .fa-robot ,.fa-video, .fa-comment,.fa-image,.fa-headphones{  
             padding: 10px;
             border-radius: 50%;
+        }
+        .fab{
+            font-size: 15px;
+            color: #fff;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 50px;/* Center the icon vertically */
+        }
+        .fa-diagram-project{
+            background-color: #ff6f61;
         }
         .fa-palette{
             background-color: #af2798;
@@ -133,16 +149,16 @@ body{
             background-color: #7d1086;
         }
         .fa-headphones{
-            background-color: #a556dd;
+            background-color: #6467ff;
         }
         .fa-image{
-            background-color: #79489c;
+            background-color: #8fd6ff;
         }
         .fa-video{
-            background-color: #6b2c8f;
+            background-color: #ff78e2;
         }
         .fa-comment{
-            background-color: #9c4fbb;
+            background-color: #d469ff;
         }
         img{
             width: 100%;
@@ -150,7 +166,7 @@ body{
             border-radius: 10px;
         }
         @media (max-width: 780px) {
-            ul {
+            header ul {
                 flex-direction: column;
                 position: absolute;
                 top: 50px;
@@ -162,7 +178,9 @@ body{
                 border-radius: 20px;
                 padding: 20px;
             }
-            
+            footer nav{
+                color: black;
+            }
             ul.active {
                 display: flex;
             }
@@ -175,12 +193,36 @@ body{
                 align-items: center;
             }
             .test {
-                width: 90vw;
+                width: 60vw;
                 min-width: unset;
                 margin: 10px 0;
             }
             .test img {
-                width: 80vw;
+                width: 50vw;
                 height: auto;
+                object-fit: cover;
             }
         }
+        .Why {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.Why p {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    
+    box-sizing: border-box;
+    border-radius: 20px;
+    
+}
