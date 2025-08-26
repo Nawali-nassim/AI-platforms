@@ -10,7 +10,7 @@ header,footer{
     justify-content: space-between;
     padding: 10px 20px;
 }
-.logo {
+.logo{
     display: flex;
     align-items: center;
     gap: 10px;
@@ -78,16 +78,37 @@ div p {
     text-align: center;
     padding: 20px;
     margin: 20px;   
+    box-sizing: border-box;
 }
 div h4{
     display: inline;
 }
-.why {
+.categories, .why {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
+    
+}
+.categories p{
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.why p {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .test {
     width: 220px; /* Fixed card width for consistency */
@@ -167,6 +188,11 @@ img{
     flex-wrap: wrap;
     grid-template-columns: 1fr 1fr;
 }
+#footer-nav a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 15px;
+}
 footer{
     flex-direction: column;
     align-items: center;
@@ -199,16 +225,31 @@ footer{
     text-shadow: #0a0a0a 1px 1px 2px;
 }
 .log-footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
     height: auto;
 }
 .log-footer p{
-    color: #42254b;
+    color: #000000;
     font-size: 14px;
     display: inline-block;
+}
+.log-btn{
+    background-color: #79489c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.signLink{
+    color: #42254b;
+    font-weight: bold;
 }
 @media (max-width: 780px) {
     header ul {
@@ -257,7 +298,6 @@ footer{
         align-items: flex-start;
         flex-wrap: wrap;
     }
-
     .Why p {
         width: 200px;
         height: 200px;
