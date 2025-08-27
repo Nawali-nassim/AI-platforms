@@ -265,6 +265,34 @@ footer{
     color: #42254b;
     font-weight: bold;
 }
+.log-btn{
+    background-color: #79489c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.signLink{
+    color: #42254b;
+    font-weight: bold;
+}
+.log-btn{
+    background-color: #79489c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.signLink{
+    color: #42254b;
+    font-weight: bold;
+}
 @media (max-width: 780px) {
     header ul {
         flex-direction: column;

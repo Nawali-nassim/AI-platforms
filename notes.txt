@@ -1,0 +1,4 @@
+create sisn up file 
+do encryption for the password 
+make the error message apeare in the main 
+page 
