@@ -290,6 +290,7 @@ footer{
     color: #42254b;
     font-weight: bold;
 }
+
 @media (max-width: 780px) {
     header ul {
         flex-direction: column;
@@ -306,7 +307,7 @@ footer{
     footer nav{
         color: black;
     }
-    ul.active {
+    ul .active {
         display: flex;
     }
     

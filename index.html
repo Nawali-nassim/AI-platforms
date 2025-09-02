@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nawali</title>
     <script src="https://kit.fontawesome.com/3aca1396eb.js" crossorigin="anonymous"></script>
+    <script src="mainJS.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -14,11 +15,10 @@
             <span>Nawali</span>
         </div>
         <nav>
-            <button class="menu-toggle" aria-label="Toggle menu">
+            <button class="menu-toggle" aria-label="Toggle menu" >
                 <i class="fas fa-bars"></i>
             </button>
-            <ul>
-                
+            <ul> 
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About the site</a></li>
                 <li><a href="category.html">Categories</a></li>
@@ -105,11 +105,5 @@
         </div>
     </footer>
 </body>
- <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('nav ul');
-        menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    </script>
+
 </html>
