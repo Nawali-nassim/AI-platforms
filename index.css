@@ -290,8 +290,53 @@ footer{
     color: #42254b;
     font-weight: bold;
 }
-
+.card{
+    background-color: #7e80ff;
+    border-radius: 1em;
+    box-shadow: 4px 4px 15px 2px ;
+    transition: 0.3s;/* Smooth transition for hover effect */
+    padding: 10px;
+    text-align: center;
+}
+.card:not(:first-child) {
+    margin-left:-2rem ;
+}
+.cards{
+    display: flex;
+    margin: 20px;
+}
+.card:hover,
+.card:not(:last-child):focus-within{
+    transform: translateY(-1rem); /* Move the card up on hover */
+}
+.card:not(:last-child):hover ~ .card ,.card:not(:last-child):focus-within ~ .card 
+ { /* Selects all subsequent sibling cards which has the class card 
+                if we use + instead of ~ it will chose only the next card */
+    transform: translateX(3rem); /* Move the subsequent cards to the right */
+    background-color: wheat;
+}
+#chatp, #videop, #imagep, #audiop{
+    display: none;
+}
+.hide{
+    display: none;
+}
 @media (max-width: 780px) {
+    .cards{
+        flex-direction: column;
+        align-items: center;
+    }
+    .card{
+        padding: 5px;
+    }
+    .card:not(:first-child) {
+        margin-top:-2em ;
+        margin-left: 0;
+    }
+    .card:not(:last-child):hover ~ .card {
+        transform: translateY(1rem);
+        background-color: wheat;
+    }       
     header ul {
         flex-direction: column;
         position: absolute;
@@ -299,20 +344,16 @@ footer{
         right: 0;
         background: #79489c;
         width: 180px;
-        display: none;
+        display: none !important;
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         border-radius: 20px;
         padding: 20px;
     }
-    footer nav{
-        color: black;
+    header ul.active {
+        display: flex !important;
     }
-    ul .active {
-        display: flex;
-    }
-    
     .menu-toggle {
-        display: block;
+        display: block !important;
     }
     .why {
         flex-direction: column;
