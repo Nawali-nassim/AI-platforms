@@ -39,6 +39,7 @@
             <i class="fas fa-chess-queen"></i>
             <span>Nawali</span>
         </div>
+        <input type="search" name="searchInput" id="searchInput">
         <nav>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -53,27 +54,59 @@
             </ul>
         </nav>
     </header>
+    <div class="divs">
+        <h1>Categories</h1>
+        <h4>click on the category card and the Platforms will apear down</h4>
+    </div>
     <div class="cards">
-        <div class="card" onclick="showChat()"><h2>Chat</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p></div>
-        <div class="card"  onclick="showVideo()"><h2>Video</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p></div>
-        <div class="card" onclick="showImage()"><h2>Image</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p></div>
-        <div class="card" onclick="showAudio()"><h2>Audio</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p></div>
+        <div class="card" onclick="showChat()">
+            <h2>Chat</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p>
+        </div>
+        <div class="card"  onclick="showVideo()">
+            <h2>Video</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p>
+        </div>
+        <div class="card" onclick="showImage()">
+            <h2>Image</h2>
+            <p><u>fdfgdfgdgf</u>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p>
+        </div>
+        <div class="card" onclick="showAudio()">
+            <h2>Audio</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas eum exercitationem asperiores dolorum distinctio, blanditiis explicabo iste similique reiciendis repellendus?</p>
+        </div>
     </div>
-    <div id="chatp">
-        <p>chattttttttt</p>
-    </div>
-    <div id="videop">
-            <p>videooooooooooooo</p>
-    </div>
-    <div id="imagep">
-        <p>imageeeeeeeeeeeee</p>
-    </div>
-    <div id="audiop">
-        <p>audioooooooooooooooooooddddd</p>
+    <div class="divs">
+        <div id="chatp">
+            <h3>Chat Platformss:</h3>
+            <div class="Platform">
+
+            </div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chatgpt</div>
+            <div class="Platform">chat</div>
+        </div>
+        <div id="videop">
+            <h3>Video Platforms:</h3>
+            <div class="Platform">dfdf</div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+        </div>
+        <div id="imagep">
+          <h3>Image Platforms:</h3>
+          <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+        </div>
+        <div id="audiop">
+           <h3>Audio Platforms:</h3>
+           <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+            <div class="Platform">chat</div>
+        </div>
     </div>
     <footer>
         <nav >
@@ -93,5 +126,21 @@
             <p>&copy; 2023 Nawali. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        const sInput= document.getElementById('searchInput');
+        sInput.addEventListener('keyup',function(){
+            let value =sInput.value.toLowerCase();
+            const Platforms= document.querySelectorAll('.Platform');
+            Platforms.forEach(Platform =>{
+                let text = Platform.textContent.toLowerCase();
+                if (text.includes(value)){
+                    Platform.style.display = '';
+                } else {
+                    Platform.style.display = 'none';
+                }
+            });
+            
+        });
+    </script>
 </body>
 </html>
