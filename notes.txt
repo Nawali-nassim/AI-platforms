@@ -1,4 +1,8 @@
-create sisn up file 
-do encryption for the password 
-make the error message apeare in the main 
-page 
+-get the images of the platforms
+-insert the platform into the web 
+-make the (add to favorite )button
+-create the profile page
+-create the admin page
+-learn from the new log in file in test 
+-enhance the design ( search input ,)
+

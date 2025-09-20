@@ -1,6 +1,4 @@
 <?php
-
-
 require 'vendor/autoload.php';
 
 use PhpOffice\PhpWord\IOFactory;
@@ -21,7 +19,7 @@ try {
     die("connection faild" . $e->getMessage());
 }
 
-$word_file = 'C:\Users\user\OneDrive\Desktop\work\ai_platforms_compiled.docx';
+$word_file = 'C:\wamp64\www\project1_AI_Platform\ai_platforms_compiled.docx';
 
 try {
     $phpWord = IOFactory::load($word_file);
@@ -29,16 +27,16 @@ try {
     die("error in download the word file: " . $e->getMessage());
 }
 
-$stmt = $pdo->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+$stmt = $pdo->prepare("INSERT INTO platforms (name, description, link, idCategory) VALUES (?, ?,?,?)");
 
 $rowCount = 0;
 
-// 5. قراءة المستند وإدخال البيانات
-foreach ($phpWord->getSections() as $section) {
+//read data from word file
+foreach ($phpWord->getSections() as $section) { //sections like pages
     foreach ($section->getElements() as $element) {
         if ($element instanceof Table) {
             foreach ($element->getRows() as $rowIndex => $row) {
-                // تخطي الصف الأول إذا كان يحتوي على عناوين الأعمدة
+                // skip the header row
                 if ($rowIndex === 0) {
                     continue;
                 }
@@ -46,10 +44,10 @@ foreach ($phpWord->getSections() as $section) {
                 $rowData = [];
                 foreach ($row->getCells() as $cell) {
                     $cellText = '';
-                    foreach ($cell->getElements() as $cellElement) {
-                        if ($cellElement instanceof TextRun) {
+                    foreach ($cell->getElements() as $cellElement) {// cell can contain multiple elements like text, images, etc.
+                        if ($cellElement instanceof TextRun) {// a text run can contain multiple text elements like bold, italic, etc.
                             foreach ($cellElement->getElements() as $textElement) {
-                                if ($textElement instanceof Text) {
+                                if ($textElement instanceof Text) { // actual text element
                                     $cellText .= $textElement->getText();
                                 }
                             }
@@ -58,9 +56,8 @@ foreach ($phpWord->getSections() as $section) {
                     $rowData[] = trim($cellText);
                 }
 
-                // 6. تنفيذ استعلام الإدخال مع بيانات الصف
-                // تأكد أن عدد البيانات يتطابق مع عدد علامات الاستفهام في الاستعلام
-                if (count($rowData) === 2) { // للتأكد من أن الصف يحتوي على عمودين
+                // insert only if we have exactly 4 columns
+                if (count($rowData) === 4) { 
                     $stmt->execute($rowData);
                     $rowCount++;
                 }
@@ -69,4 +66,5 @@ foreach ($phpWord->getSections() as $section) {
     }
 }
 
-echo "تم إدخال " . $rowCount . " صفًا بنجاح في قاعدة البيانات.";
+echo  $rowCount . " rows inserted successfully.";
+?>
