@@ -15,7 +15,7 @@
         </div>
     <div class="divs log-form">
         <h2 id="logh">Sign up </h2>
-        <form action="signupfor.php" method="post" class="log-formi">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="log-formi">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required placeholder="Enter your user name"  class="validate-username" pattern="[A-Za-z0-9_@#&-]+"><br><br>
             <label for="password">Password:</label>
@@ -26,8 +26,8 @@
                 include 'connectDB.php';
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if(isset($_POST['username']) && isset($_POST['password'])){
-                        $username = $_POST['username'];
-                        $password = $_POST['password'];
+                        $username = test_input($_POST['username']);
+                        $password = test_input($_POST['password']);
                         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                         // Use prepared statement for SELECT
                         $stmt = $con->prepare("SELECT * FROM users WHERE user_name = ?");
@@ -52,6 +52,12 @@
                         }
             }
                 mysqli_close($con);
+                function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
                 ?>
                 <br>
             <span id='errorc' style='color:red;text-align:center;'>
