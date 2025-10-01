@@ -40,7 +40,8 @@
                         $stmt = $con->prepare("INSERT INTO users (user_name, password) VALUES (?, ?)");
                         $stmt->bind_param("ss", $username, $hashed_password);
                         if ($stmt->execute()) {
-                            $_SESSION['username'] = $username;
+                            $_SESSION['user_name'] = $username;
+                            $_SESSION['user_id'] = $row['idU'];
                             header("Location: index.html");
                             exit();
                         } else {

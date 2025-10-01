@@ -1,11 +1,13 @@
 <?php
 include 'connectDB.php';
+session_start();
 
 $catsRes = $con->query("SELECT * FROM categories ORDER BY idC");
 $categories = [];
 while($c = $catsRes->fetch_assoc()) {
     $categories[] = $c;
 }
+
 $platRes = $con->query("
   SELECT * FROM platforms  
   ORDER BY name
@@ -14,6 +16,21 @@ $platforms = [];
 while($p = $platRes->fetch_assoc()) {
     $platforms[] = $p;
 }
+//for favorites
+$userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
+if ($userId > 0) {
+    $favResult = $con->query("SELECT idPlatform FROM favorites WHERE idUser = $userId");
+    $favorites = [];
+    if (!$favResult ) {
+        die("Query error: " . $con->error);
+    }
+    while($row = $favResult->fetch_assoc()) {
+        $favorites[] = $row['idPlatform'];
+    }
+} else {
+    $favorites = [];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +48,13 @@ while($p = $platRes->fetch_assoc()) {
             <i class="fas fa-chess-queen"></i>
             <span>Nawali</span>
         </div>
-        <input type="search" name="searchInput" id="searchInput">
         <nav>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
             <ul>   
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About the site</a></li>
+                <li><a href="about.html">About us</a></li>
                 <li><a href="category.html">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
                 <li><a href="signupfor.php">Sign up</a></li>
@@ -48,7 +64,15 @@ while($p = $platRes->fetch_assoc()) {
     </header>
     <div class="divs">
         <h1>Categories</h1>
-        <h4>click on the category card and the Platforms will be filtered</h4>
+        <span><?php 
+        if (isset($_SESSION['user_name'])) {
+            echo "Welcome, " . htmlspecialchars($_SESSION['user_name']) . "!";
+        } else {
+            echo "Welcome, Guest!";
+        }
+        ?></span>
+        <h4>click on the category card and the Platforms will be filtered </h4><br>
+        <p> <input type="search" name="searchInput" id="searchInput" placeholder="Search platforms here"></p>
     </div>
     <div class="cards">
         <?php foreach($categories as $cat): ?>
@@ -72,6 +96,7 @@ while($p = $platRes->fetch_assoc()) {
         <h3 class="title" data-cat="4" style="display:none;"> Audio platfoms</h3>
 
         <div id="empty-msg" style="display:none; margin:12px 0;">no platform in this category</div>
+        
         <div  id="platformsContainer">
             <?php foreach($platforms as $p): ?>
             <div class="platformCard" data-cat="<?=htmlspecialchars($p['idCategory'])?>" id="platform-<?=intval($p['idP'])?>">
@@ -83,7 +108,10 @@ while($p = $platRes->fetch_assoc()) {
                 </p>
 
                 <div class="cardFooter">
-                    <button class="star"><i class="fa-regular fa-star"></i></button>
+                    <button class="star" >
+                        <i class="favorite-icon <?= in_array(htmlspecialchars($p['idP']), $favorites) ? 'fas active' : 'far' ?> fa-star"
+                            data-id="<?=htmlspecialchars($p['idP'])?>"></i>
+                    </button>
                     <a class="visit" href="<?=htmlspecialchars($p['link'])?>" target="_blank" rel="noopener noreferrer">Visit the web</a>
                 <!--noopener: Prevents the new page from being able to access the window.opener property of the original page.
                  This improves security by protecting your page from potential malicious scripts on the linked site.
@@ -91,7 +119,40 @@ while($p = $platRes->fetch_assoc()) {
                  This means the new page won’t know where the visitor came from.-->
                 </div>
             </div>
-            <?php endforeach; ?>    
+            <?php endforeach; ?> 
+<script>
+document.querySelectorAll('.favorite-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        let platformId = this.getAttribute('data-id');
+        let el = this;//to refer to the clicked icon
+
+        // toggle favorite status 
+        let action = el.classList.contains('active') ? 'remove' : 'add';
+        //using ajax to send the request to favorite.php:
+        fetch('favorite.php', {//options
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+                //to send data in URL-encoded format eg: id=1&action=add ,can be json too
+            },
+            body: 'id=' + platformId + '&action=' + action //the content of the POST request
+        })
+        .then(response => response.text())//get the response as text from the server
+        .then(data => {
+            console.log(data);
+
+            if (action === 'add') {//change the icon shape
+                el.classList.add('active', 'fas');
+                el.classList.remove('far');
+            } else {
+                el.classList.remove('active', 'fas');
+                el.classList.add('far');
+            }
+        });
+    });
+});
+</script>
+   
         </div>
         
     </div>

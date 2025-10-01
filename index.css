@@ -303,16 +303,16 @@ footer{
 .categoryCard h2{
     background-color: #8a1faa;
     padding: 10px;
-    width: 20%;
+    width:fit-content;
     margin: 10px auto ;
     border-radius: 10px;
     border: #6a297e 2px solid;
 }
-.categoryCard:not(:first-child) {
-    margin-left:-2rem ;
-}
+
 .cards{
-    display: flex;
+    display: grid;
+    grid-template-columns:auto auto;
+    grid-template-rows: auto auto;
     margin: 20px;
     overflow: visible;
 }
@@ -320,10 +320,10 @@ footer{
 .categoryCard:not(:last-child):focus-within{
     transform: translateY(-1rem); /* Move the categoryCard up on hover */
 }
-.categoryCard:not(:last-child):hover ~ .categoryCard ,.categoryCard:not(:last-child):focus-within ~ .categoryCard 
+.categoryCard:not(:last-child):not(:nth-child(2)):hover + .categoryCard ,.categoryCard:not(:last-child):not(:nth-child(2)):focus-within + .categoryCard 
  { /* Selects all subsequent sibling cards which has the class categoryCard 
                 if we use + instead of ~ it will chose only the next categoryCard */
-    transform: translateX(3rem); /* Move the subsequent cards to the right */
+    transform: translateX(1rem); /* Move the subsequent cards to the right */
 }
 #chatp, #videop, #imagep, #audiop{
     display: none;
@@ -336,7 +336,7 @@ footer{
     width: 200px;
     padding: 8px;
     border-radius: 20px;
-    border: none;
+    border: #afaeae 1px solid;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: width 0.3s ease;
 }
@@ -356,7 +356,6 @@ footer{
     text-align: center;
     color: #000000;
     width: 220px; /* Fixed categoryCard width for consistency */
-    
     margin: 20px;
     box-sizing: border-box;/* Ensures padding and border are included in the width */
     display: flex;
@@ -390,6 +389,15 @@ footer{
 .star{
     background: none;
     border: none;
+}
+.favorite-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: gray;
+    transition: color 0.3s;
+}
+.favorite-icon.active {
+    color: gold;
 }
 .visit{
     background-color: #79489c;
@@ -465,6 +473,7 @@ footer{
     margin: 0;
   }
     .cards{
+        display: flex;
         flex-direction: column;
         align-items: center;
     }

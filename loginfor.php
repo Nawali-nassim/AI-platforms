@@ -35,7 +35,8 @@
                         if ($result->num_rows == 1) {
                             $row = mysqli_fetch_assoc($result);
                             if (password_verify($password, $row['password'])) {
-                                $_SESSION['username'] = $username;
+                                $_SESSION['user_name'] = $username;
+                                $_SESSION['user_id'] = $row['idU'];
                                 header("Location: index.html");
                                 exit();
                             } else {
