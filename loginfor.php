@@ -36,8 +36,8 @@
                             $row = mysqli_fetch_assoc($result);
                             if (password_verify($password, $row['password'])) {
                                 $_SESSION['user_name'] = $username;
-                                $_SESSION['user_id'] = $row['idU'];
-                                header("Location: index.html");
+                                $_SESSION['user_id'] = $row['PID'];
+                                header("Location: index.php");
                                 exit();
                             } else {
                                 $_SESSION['login_error'] = "Invalid password.";

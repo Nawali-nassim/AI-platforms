@@ -42,7 +42,7 @@
                         if ($stmt->execute()) {
                             $_SESSION['user_name'] = $username;
                             $_SESSION['user_id'] = $row['idU'];
-                            header("Location: index.html");
+                            header("Location: index.php");
                             exit();
                         } else {
                             $_SESSION['signup_error'] =  "Error inserting user: " . $stmt->error;

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +22,19 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.html">About the site</a></li>
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
-                <li><a href="signupfor.php">Sign up</a></li>
-                <li><a href="loginfor.php">Log in</a></li>
+                <?php
+                    if(isset($_SESSION['user_id'])) {
+                        echo '<li><a href="logout.php">Log out</a></li>';
+                        echo '<li><a href="editProfile.php">edit profile</a></li>';
+                    } else {
+                        echo '<li><a href="loginfor.php">Log in</a></li>';
+                        echo '<li><a href="signupfor.php">Sign up</a></li>';
+                    }
+                ?>
             </ul>
         </nav>
     </header>

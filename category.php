@@ -53,12 +53,19 @@ if ($userId > 0) {
                 <i class="fas fa-bars"></i>
             </button>
             <ul>   
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.html">About us</a></li>
                 <li><a href="category.html">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
-                <li><a href="signupfor.php">Sign up</a></li>
-                <li><a href="loginfor.php">Log in</a></li>
+                <?php
+                    if(isset($_SESSION['user_id'])) {
+                        echo '<li><a href="logout.php">Log out</a></li>';
+                        echo '<li><a href="editProfile.php">edit profile</a></li>';
+                    } else {
+                        echo '<li><a href="loginfor.php">Log in</a></li>';
+                        echo '<li><a href="signupfor.php">Sign up</a></li>';
+                    }
+                ?>
             </ul>
         </nav>
     </header>
@@ -140,7 +147,7 @@ document.querySelectorAll('.favorite-icon').forEach(icon => {
         .then(response => response.text())//get the response as text from the server
         .then(data => {
             console.log(data);
-
+            alert(data);//show the response in an alert box
             if (action === 'add') {//change the icon shape
                 el.classList.add('active', 'fas');
                 el.classList.remove('far');
