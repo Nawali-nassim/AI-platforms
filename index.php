@@ -98,7 +98,7 @@ session_start();
     <footer>
         <nav >
             <ul id="footer-nav"> 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.html">About the site</a></li>
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>

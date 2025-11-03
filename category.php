@@ -119,55 +119,44 @@ if ($userId > 0) {
                         <i class="favorite-icon <?= in_array(htmlspecialchars($p['idP']), $favorites) ? 'fas active' : 'far' ?> fa-star"
                             data-id="<?=htmlspecialchars($p['idP'])?>"></i>
                     </button>
-                    <a class="visit" href="<?=htmlspecialchars($p['link'])?>" target="_blank" rel="noopener noreferrer">Visit the web</a>
+                    <button class="visit">
+                        <a class="Nodecoration" href="<?=htmlspecialchars($p['link'])?>" target="_blank" rel="noopener noreferrer">Visit the web</a>
+                    </button>
                 <!--noopener: Prevents the new page from being able to access the window.opener property of the original page.
                  This improves security by protecting your page from potential malicious scripts on the linked site.
                 noreferrer: Prevents the browser from sending the Referer header to the new page.
                  This means the new page won’t know where the visitor came from.-->
+                    <button class="feedback-btn visit"
+                        data-id="<?=htmlspecialchars($p['idP'])?>"
+                        data-name="<?=htmlspecialchars($p['name'])?>"><!--for sending it to the modal-->
+                        Give feedback
+                    </button>
                 </div>
             </div>
-            <?php endforeach; ?> 
-<script>
-document.querySelectorAll('.favorite-icon').forEach(icon => {
-    icon.addEventListener('click', function() {
-        let platformId = this.getAttribute('data-id');
-        let el = this;//to refer to the clicked icon
+                <div id="feedbackModal" class="modal" aria-hidden="true" style="display:none;">
+                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="fbTitle">
+                    <button class="modal-close" aria-label="Close">&times;</button>
+                    <h3 id="fbTitle">Feedback for <span id="fbPlatformName"></span></h3>
+                    <form id="feedbackForm">
+                    <input type="hidden" name="platform_id" id="fbPlatformId" value="">
+                    <textarea name="feedback" id="fbText" rows="6" placeholder="Write your feedback..." required></textarea>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-submit">Send</button>
+                        <button type="button" class="btn-cancel">Cancel</button>
+                    </div>
+                    </form>
+                    <div id="fbMsg" style="display:none;margin-top:8px;"></div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            
 
-        // toggle favorite status 
-        let action = el.classList.contains('active') ? 'remove' : 'add';
-        //using ajax to send the request to favorite.php:
-        fetch('favorite.php', {//options
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-                //to send data in URL-encoded format eg: id=1&action=add ,can be json too
-            },
-            body: 'id=' + platformId + '&action=' + action //the content of the POST request
-        })
-        .then(response => response.text())//get the response as text from the server
-        .then(data => {
-            console.log(data);
-            alert(data);//show the response in an alert box
-            if (action === 'add') {//change the icon shape
-                el.classList.add('active', 'fas');
-                el.classList.remove('far');
-            } else {
-                el.classList.remove('active', 'fas');
-                el.classList.add('far');
-            }
-        });
-    });
-});
-</script>
-   
         </div>
-        
     </div>
-
     <footer>
         <nav >
             <ul id="footer-nav"> 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.html">About the site</a></li>
                 <li><a href="category.html">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
@@ -182,21 +171,5 @@ document.querySelectorAll('.favorite-icon').forEach(icon => {
             <p>&copy; 2023 Nawali. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-        const sInput= document.getElementById('searchInput');
-        sInput.addEventListener('keyup',function(){
-            let value =sInput.value.toLowerCase();
-            const Platforms= document.querySelectorAll('.platformCard');
-            Platforms.forEach(Platform =>{
-                let text = Platform.textContent.toLowerCase();
-                if (text.includes(value)){
-                    Platform.style.display = '';
-                } else {
-                    Platform.style.display = 'none';
-                }
-            });
-            
-        });
-    </script>
 </body>
 </html>

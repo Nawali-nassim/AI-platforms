@@ -1,10 +1,10 @@
 -get the images of the platforms
--make the (add to favorite )button
+-
 
 -create the profile page
 -create the admin page
 -learn from the new log in file in test 
--enhance the design ( search input ,)
+-enhance the design ( search input , feedback model)
 
 
 
