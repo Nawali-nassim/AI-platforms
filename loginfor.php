@@ -8,68 +8,71 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body class="log-page">
-    <div class="logo">
-            <i class="fas fa-chess-queen"></i>
-            <span>Nawali</span>
+    <header>
+        <div class="logo">
+                <i class="fas fa-chess-queen"></i>
+                <span>Nawali</span>
         </div>
-    <div class="divs log-form">
-        <h2 id="logh">Log in </h2>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="log-formi">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required placeholder="Enter your name" class="validate-username" pattern="[A-Za-z0-9_@#&-]+"><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required placeholder="Enter your password" class="validate-username"><br><br>
-
-            <button type="submit" class="log-btn">Log in</button>
-            <?php 
-                session_start();
-                include 'connectDB.php';
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    if(isset($_POST['username']) && isset($_POST['password'])){
-                        $username = test_input($_POST['username']);
-                        $password = test_input($_POST['password']);
-                        $stmr = $con->prepare("SELECT * FROM users WHERE user_name = ? ");
-                        $stmr->bind_param("s", $username);
-                        $stmr->execute();
-                        $result = $stmr->get_result();
-                        if ($result->num_rows == 1) {
-                            $row = mysqli_fetch_assoc($result);
-                            if (password_verify($password, $row['password'])) {
-                                $_SESSION['user_name'] = $username;
-                                $_SESSION['user_id'] = $row['PID'];
-                                header("Location: index.php");
-                                exit();
+    </header>
+    <main>
+        <div class="divs log-form">
+            <h2 id="logh">Log in </h2>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="log-formi">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your name" class="validate-username" pattern="[A-Za-z0-9_@#&-]+"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password" class="validate-username"><br><br>
+                <button type="submit" class="log-btn">Log in</button>
+                <?php 
+                    session_start();
+                    include 'connectDB.php';
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        if(isset($_POST['username']) && isset($_POST['password'])){
+                            $username = test_input($_POST['username']);
+                            $password = test_input($_POST['password']);
+                            $stmr = $con->prepare("SELECT * FROM users WHERE user_name = ? ");
+                            $stmr->bind_param("s", $username);
+                            $stmr->execute();
+                            $result = $stmr->get_result();
+                            if ($result->num_rows == 1) {
+                                $row = mysqli_fetch_assoc($result);
+                                if (password_verify($password, $row['password'])) {
+                                    $_SESSION['user_name'] = $username;
+                                    $_SESSION['user_id'] = $row['PID'];
+                                    header("Location: index.php");
+                                    exit();
+                                } else {
+                                    $_SESSION['login_error'] = "Invalid password.";
+                                }
                             } else {
-                                $_SESSION['login_error'] = "Invalid password.";
+                                $_SESSION['login_error'] = "No user found with that username.";
                             }
-                        } else {
-                            $_SESSION['login_error'] = "No user found with that username.";
+                            header("Location: loginfor.php");
+                            exit();
                         }
-                        header("Location: loginfor.php");
-                         exit();
                     }
-                }
-                mysqli_close($con); 
-                function test_input($data) {
-                    $data = trim($data);
-                    $data = stripslashes($data);
-                    $data = htmlspecialchars($data);
-                    return $data;
-                    }
-                ?>
+                    mysqli_close($con); 
+                    function test_input($data) {
+                        $data = trim($data);
+                        $data = stripslashes($data);
+                        $data = htmlspecialchars($data);
+                        return $data;
+                        }
+                    ?>
+                    <br>
+                    <span id='errorc' style='color:red;text-align:center;'>
+                    <?php
+                        if (isset($_SESSION['login_error'])) {
+                        echo $_SESSION['login_error'];
+                        unset($_SESSION['login_error']); // Clear after showing
+                    } ?>
+                </span>
+                
                 <br>
-                <span id='errorc' style='color:red;text-align:center;'>
-                <?php
-                    if (isset($_SESSION['login_error'])) {
-                    echo $_SESSION['login_error'];
-                    unset($_SESSION['login_error']); // Clear after showing
-                } ?>
-            </span>
-            
-            <br>
-            <p>Don't have an account? <br><a href="signupfor.php" class="signLink">Sign up</a></p>
-        </form> 
-    </div> 
+                <p>Don't have an account? <br><a href="signupfor.php" class="signLink">Sign up</a></p>
+            </form> 
+        </div> 
+    </main> 
     <footer>
             <div >
             <p>Follow us on:

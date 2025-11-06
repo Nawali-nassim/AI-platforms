@@ -1,7 +1,15 @@
-body{
+body,html{
     margin: 0;
+    height: 100%;
     font-family: Arial, sans-serif;
     background: linear-gradient(90deg, #f0f0f0, #ffffff);
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex: 1; /*make it take the empty space*/
 }
 header,footer{
     background: linear-gradient(135deg,#42254b,#a556dd);
@@ -97,7 +105,7 @@ div h4{
 }
 .why p {
     width: 200px;
-    height: 200px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -225,11 +233,11 @@ footer{
     color: #42254b;
     text-shadow: #0a0a0a 1px 1px 2px;
 }
+/*for what this :???
 .log-footer {
     position:fixed;
     bottom: 0;
     width: 100%;
-
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -247,7 +255,7 @@ footer{
     font-size: 14px;
     display: inline-block;
     margin:5px 0;
-}
+}*/
 .log-btn{
     background-color: #79489c;
     color: white;
@@ -399,7 +407,7 @@ footer{
 .favorite-icon.active {
     color: gold;
 }
-.visit{
+.btns{
     background-color: #79489c;
     color: white;
     border: none;
@@ -416,8 +424,9 @@ footer{
     align-items: center;
     justify-content: center;
     display: inline-flex;
+    border: #000000 1px solid;
 }
-.visit:hover{
+.btns:hover{
     background-color: #5e337a;
 }
 .cardFooter{
@@ -439,12 +448,14 @@ footer{
   z-index:9999;
 }
 .modal-box{
+  font-style: bold;
   background:#fff;
   position:relative;
   padding:16px;
-  border-radius:8px;
+  border-radius:10px;
   width: min(560px, 95%);
   box-shadow:0 6px 24px rgba(0,0,0,0.3);
+  border: #000000 1px solid;
 }
 .modal-close{
   position:absolute;
@@ -457,16 +468,27 @@ footer{
 }
 .modal-actions{
   display:flex;
-  gap:8px;
+  gap:10px;
   margin-top:8px;
 }
 #fbText{
   width:100%;
-  box-sizing:border-box;
+  box-sizing:border-box; /* include padding/border in width */
   resize:vertical;
   min-height:90px;
+  border-radius: 10px;
 }
-
+#fbTitle{
+    background-color: #79489c;
+    color: white;
+    padding: 10px;
+    width:fit-content;
+    margin: 10px auto ;
+    border-radius: 10px;
+    border: #000000 2px solid;
+    box-shadow:5px 5px  #7e7e7e ;
+}
+ 
 /* hide modal by default (JS toggles inline style) */
 .modal[aria-hidden="true"] { 
     display:none; 
