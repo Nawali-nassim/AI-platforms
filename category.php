@@ -60,7 +60,7 @@ if ($userId > 0) {
                 <?php
                     if(isset($_SESSION['user_id'])) {
                         echo '<li><a href="logout.php">Log out</a></li>';
-                        echo '<li><a href="editProfile.php">Profile</a></li>';
+                        echo '<li><a href="Profile.php">Profile</a></li>';
                     } else {
                         echo '<li><a href="loginfor.php">Log in</a></li>';
                         echo '<li><a href="signupfor.php">Sign up</a></li>';
@@ -170,7 +170,7 @@ if ($userId > 0) {
                 <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             </p>
-            <p>&copy; 2023 Nawali. All rights reserved.</p>
+            <p>&copy; 2025 Nawali. All rights reserved.</p>
         </div>
     </footer>
 </body>

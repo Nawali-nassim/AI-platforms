@@ -38,32 +38,32 @@
                             $stmt->execute();
                             $result = $stmt->get_result();
                             if ($result->num_rows == 1) {
-                            $_SESSION['signup_error'] =  "Username already taken.";
+                                $_SESSION['signup_error'] =  "Username already taken.";
                             } else {
-                            $stmt = $con->prepare("INSERT INTO users (user_name, password) VALUES (?, ?)");
-                            $stmt->bind_param("ss", $username, $hashed_password);
-                            if ($stmt->execute()) {
-                                $_SESSION['user_name'] = $username;
-                                $_SESSION['user_id'] = $row['idU'];
-                                header("Location: index.php");
-                                exit();
-                            } else {
-                                $_SESSION['signup_error'] =  "Error inserting user: " . $stmt->error;
-                            }
+                                $stmt = $con->prepare("INSERT INTO users (user_name, password) VALUES (?, ?)");
+                                $stmt->bind_param("ss", $username, $hashed_password);
+                                if ($stmt->execute()) {
+                                    $_SESSION['user_name'] = $username;
+                                    $_SESSION['user_id'] = $row['idU'];
+                                    header("Location: index.php");
+                                    exit();
+                                } else {
+                                    $_SESSION['signup_error'] =  "Error inserting user: " . $stmt->error;
+                                }
                             }
                         header("Location: signupfor.php");
                         exit();
-                            }
-                }
+                        }
+                    }   
                     mysqli_close($con);
                     function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-    }
-                    ?>
-                    <br>
+                        $data = trim($data);
+                        $data = stripslashes($data);
+                        $data = htmlspecialchars($data);
+                        return $data;
+                    }
+                ?>
+                <br>
                 <span id='errorc' style='color:red;text-align:center;'>
                     <?php
                         if (isset($_SESSION['signup_error'])) {
