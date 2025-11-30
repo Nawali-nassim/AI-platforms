@@ -226,9 +226,63 @@ footer{
 .log-formi{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    
 }
-#logh{
+.profile-info-form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-content: space-around;
+}
+.profile-pass-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-content: space-around;
+    margin: 40px 5px;
+}
+/*.profile-main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#profile-form1, #profile-form2{
+    gap: 15px;
+    
+    margin: 20px auto;
+    flex-basis: 50%;
+}*/
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    justify-content: space-around;
+    align-items: stretch;
+    margin: 0 auto;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+  /* make forms use full column width */
+  #profile-form1, #profile-form2 {
+    width: 100%;
+    margin: 20px auto;
+    gap: 15px;
+    flex-basis: 50%;
+  }
+.inputs{
+    padding: 8px;
+    border-radius: 20px;
+    border: #afaeae 1px solid;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: none;
+}
+.labels{
+    margin-top: 10px;
+    font-weight: bold;
+}
+.logh{
     text-align: center;
     color: #42254b;
     text-shadow: #0a0a0a 1px 1px 2px;
@@ -270,33 +324,23 @@ footer{
     color: #42254b;
     font-weight: bold;
 }
-.log-btn{
-    background-color: #79489c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+.signLink{
+    color: #42254b;
+    font-weight: bold;
 }
 .signLink{
     color: #42254b;
     font-weight: bold;
 }
-.log-btn{
-    background-color: #79489c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+.error{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
 }
-.signLink{
-    color: #42254b;
-    font-weight: bold;
+.success{
+    color: green;
+    text-align: center;
+    margin-top: 10px;
 }
 .categoryCard{
     background:rgb(201, 200, 199);
@@ -621,5 +665,16 @@ footer{
         margin: 20px;
         box-sizing: border-box;
         border-radius: 20px;
+    }
+    .profile-container {
+        flex-direction: column;
+        max-width:90%;
+        align-items: center;
+            margin:  auto 0; /* center horizontally with equal spacing */
+    padding: 0 12px; 
+    box-sizing: border-box;
+    }
+    main{
+        border: #000000 1px solid;
     }
 }

@@ -6,7 +6,7 @@
 -learn from the new log in file in test 
 -enhance the design ( search input , feedback model)
 
-
+revise the hero in the home page
 
 
 --------learn-------

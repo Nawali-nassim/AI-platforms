@@ -19,10 +19,10 @@
         <div class="divs log-form">
             <h2 id="logh">Sign up </h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="log-formi">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required placeholder="Enter your user name"  class="validate-username" pattern="[A-Za-z0-9_@#&-]+"><br><br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required placeholder="Enter your password" class="validate-username"><br><br>
+                <label class="labels" for="username">Username:</label>
+                <input class="inputs" type="text" id="username" name="username" required placeholder="Enter your user name"  class="validate-username" pattern="[A-Za-z0-9_@#&-]+"><br><br>
+                <label class="labels" for="password">Password:</label>
+                <input class="inputs" type="password" id="password" name="password" required placeholder="Enter your password" class="validate-username"><br><br>
                 <button type="submit" class="log-btn">Sign up</button>
                 <?php
                     session_start();

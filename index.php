@@ -43,7 +43,10 @@ session_start();
             <br>
             <h1>One platform.<br>Unlimited AI tools .</h1>
             <a href="category.php" class="hero">Explore category</a>
-            <a href="signupfor.php" class="hero">Sign up</a>
+            <?php
+                    if(!isset($_SESSION['user_id'])) {
+                        echo " <a href='signupfor.php' class='hero'>Sign up</a>";}
+            ?>
         </div>
         <div class="divs">
             <h3>Why using Nawali?</h3>
