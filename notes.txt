@@ -1,13 +1,7 @@
 -get the images of the platforms
--
-
--create the profile page
 -create the admin page
 -learn from the new log in file in test 
 -enhance the design ( search input , feedback model)
-
-revise the hero in the home page
-
 
 --------learn-------
 A hard refresh (Ctrl+F5) forces the browser to reload all files from the server, clearing the cache and showing your latest CSS.

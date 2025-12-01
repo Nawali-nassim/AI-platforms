@@ -23,13 +23,13 @@ session_start();
             </button>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about.html">About the site</a></li>
+                <li><a href="about.php">About the site</a></li>
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
                 <?php
                     if(isset($_SESSION['user_id'])) {
                         echo '<li><a href="logout.php">Log out</a></li>';
-                        echo '<li><a href="Profile.php">Profile</a></li>';
+                        echo '<li><a href="profile.php">Profile</a></li>';
                     } else {
                         echo '<li><a href="loginfor.php">Log in</a></li>';
                         echo '<li><a href="signupfor.php">Sign up</a></li>';
@@ -104,7 +104,7 @@ session_start();
         <nav >
             <ul id="footer-nav"> 
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about.html">About the site</a></li>
+                <li><a href="about.php">About the site</a></li>
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
             </ul>

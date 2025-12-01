@@ -10,6 +10,8 @@ body{
 }
 main{
     flex: 1; /*make it take the empty space*/
+    line-height: 1.7;
+    font-size: 17px;
 }
 header,footer{
     background: linear-gradient(135deg,#42254b,#a556dd);
@@ -63,9 +65,9 @@ li a:hover {
     cursor: pointer;
 }
 h1{
-
     margin: 50px;
     color: #0a0a0a;
+    margin-bottom: 10px;
 }
 .hero{
     text-decoration: none;
@@ -81,13 +83,14 @@ h1{
     padding: 0px;
     background:linear-gradient(135deg, #f8e1ff, #a556dd);
 }
+/*
 div p {
     display: inline-block; 
     text-align: center;
     padding: 20px;
     margin: 20px;   
     box-sizing: border-box;
-}
+}*/
 div h4{
     display: inline;
 }
@@ -540,6 +543,41 @@ footer{
 .Nodecoration{
     text-decoration: none;
     color: white;
+}
+.subtitle {
+    color: #888888;
+    margin-bottom: 30px;
+    font-size: 18px;
+    text-decoration: dotted;
+    border-radius: 0px 20px 0px 20px;
+    background-color: #d1d1d1;
+    padding: 10px;
+}
+
+.section-title {
+    margin-top: 30px;
+    font-size: 22px;
+    width: 200px;
+}
+.page-title{
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 300px;
+}
+.shape{
+    border-radius: 0px 100px 100px 100px;
+    background-color: #5e337a;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+}
+.about-text {
+    display: inline;
+    margin: 20px 0;
+    color: #444;
+    line-height: 1.6;
 }
 @media (max-width: 780px) {
  .platformCard {
