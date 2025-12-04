@@ -164,7 +164,7 @@ if ($userId > 0) {
                 <li><a href="subscribe.html">Subscribe</a></li>
             </ul>
         </nav>
-        <div >
+        <div class="footer-info">
             <p>Follow us on:
                 <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>

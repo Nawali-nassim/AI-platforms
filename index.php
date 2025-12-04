@@ -23,7 +23,7 @@ session_start();
             </button>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about.php">About the site</a></li>
+                <li><a href="about.php">About us</a></li>
                 <li><a href="category.php">Categories</a></li>
                 <li><a href="subscribe.html">Subscribe</a></li>
                 <?php
@@ -109,7 +109,7 @@ session_start();
                 <li><a href="subscribe.html">Subscribe</a></li>
             </ul>
         </nav>
-        <div >
+        <div class="footer-info">
             <p>Follow us on:
                 <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>

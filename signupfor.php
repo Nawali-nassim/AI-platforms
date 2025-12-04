@@ -72,18 +72,18 @@
                     } ?>
                 </span>
                 <br>
-                <p>Already have an accaunt? <br><a href="loginfor.php" class="signLink">Log in</a></p>
+                <p class="center">Already have an accaunt? <br><a href="loginfor.php" class="signLink">Log in</a></p>
             </form> 
         </div> 
     </main>
     <footer>
-            <div >
+            <div class="footer-info">
             <p>Follow us on:
                 <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
             </p>
-            <p>&copy; 2023 Nawali. All rights reserved.</p>
+            <p>&copy; 2025 Nawali. All rights reserved.</p>
         </div>
     </footer>
 </body>
