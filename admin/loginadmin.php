@@ -16,7 +16,7 @@
     </header>
     <main>
         <div class="divs log-form">
-            <h2 class="logh">Log in </h2>
+            <h2 class="logh">Admin Log in </h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="log-formi">
                 <label class="labels" for="adminName">Username:</label>
                 <input class="inputs" type="text" id="adminName" name="adminName" required placeholder="Enter your name" class="validate-username" pattern="[A-Za-z0-9_@#&-]+"><br><br>
