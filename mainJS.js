@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
 // Feedback modal functionality-----------------------------------------------------------------------------------------------
-        const modal = document.getElementById('feedbackModal');
+  const modal = document.getElementById('feedbackModal');
   const fbName = document.getElementById('fbPlatformName');
   const fbId = document.getElementById('fbPlatformId');
   const fbText = document.getElementById('fbText');

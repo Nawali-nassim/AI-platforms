@@ -9,7 +9,6 @@
             review feedback: reply to it
             add admin 
             profile
-            show the site 
 
 
 -learn from the new log in file in test 

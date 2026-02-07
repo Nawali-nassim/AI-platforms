@@ -93,8 +93,8 @@ li a:hover {
 }
 .platforms-table{
     background-color: #ffffff;
-   
-    margin-left: 50px;
+   width: 90% ;
+    margin-left: 10px;
 }
 .platforms-table th, .platforms-table td{
     

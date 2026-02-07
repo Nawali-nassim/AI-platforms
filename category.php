@@ -135,23 +135,21 @@ if ($userId > 0) {
                     </div>
                 </div>
                     <div id="feedbackModal" class="modal" aria-hidden="true" style="display:none;">
-                    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="fbTitle">
-                        <button class="modal-close" aria-label="Close">&times;</button>
-                        <h3 id="fbTitle">Feedback for <span id="fbPlatformName"></span></h3>
-                        <form id="feedbackForm">
-                        <input type="hidden" name="platform_id" id="fbPlatformId" value="">
-                        <textarea name="feedback" id="fbText" rows="6" placeholder="Write your feedback here..." required></textarea>
-                        <div class="modal-actions">
-                            <button type="submit" class="btn-submit btns">Send</button>
-                            <button type="button" class="btn-cancel btns">Cancel</button>
-                        </div>
-                        </form>
+                        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="fbTitle">
+                            <button class="modal-close" aria-label="Close">&times;</button>
+                            <h3 id="fbTitle">Feedback for <span id="fbPlatformName"></span></h3>
+                            <form id="feedbackForm">
+                            <input type="hidden" name="platform_id" id="fbPlatformId" value="">
+                            <textarea name="feedback" id="fbText" rows="6" placeholder="Write your feedback here..." required></textarea>
+                            <div class="modal-actions">
+                                <button type="submit" class="btn-submit btns">Send</button>
+                                <button type="button" class="btn-cancel btns">Cancel</button>
+                            </div>
+                            </form>
                         <div id="fbMsg" style="display:none;margin-top:8px;"></div>
                     </div>
                 </div>
                 <?php endforeach; ?>
-                
-
             </div>
         </div>
     </main>

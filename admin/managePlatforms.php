@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin dashboard</title>
         <script src="https://kit.fontawesome.com/3aca1396eb.js" crossorigin="anonymous"></script>
-
+        <script src="adminJS.js"></script>
     <link rel="stylesheet" href="admin.css"></head>
 <body>
    <div class="admin-layout">
@@ -41,7 +41,25 @@
                             </tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>".$row["idP"]."</td><td>".$row["name"]."<i class='fa-regular fa-trash-can'></i> <i class='fa-regular fa-pen-to-square'></i></td><td> ".$row["description"]."</td><td>".$row["link"]."</td><td>".$row["idCategory"]."</td><td>".$row["icon"]."</td></tr>";
+                        echo "<tr><td>".$row["idP"]."</td>
+                                <td>".$row["name"]."
+                                    <button class='deletePlatform'><i class='deleteIcon fa-regular fa-trash-can' data-id='".htmlspecialchars($row["idP"])."'></i></button>
+                                    <button class='editPlatform'
+                                            data-id='".$row["idP"]."'
+                                            data-name='".$row["name"]."'
+                                            data-description='".$row["description"]."'
+                                            data-link='".$row["link"]."'
+                                            data-idCategory='".$row["idCategory"]."'
+                                            data-icon='".$row["icon"]."'
+                                            >
+                                        <i class='ediIcon fa-regular fa-pen-to-square' data-id='".htmlspecialchars($row["idP"])."'></i>
+                                    </button>
+                                </td>
+                                <td> ".$row["description"]."</td>
+                                <td>".$row["link"]."</td>
+                                <td>".$row["idCategory"]."</td>
+                                <td>".$row["icon"]."</td>
+                            </tr>";
                     }
                 echo "</table>";
                 } else {
@@ -49,7 +67,26 @@
                 }
 
                 $con->close();
-            ?>      
+            ?>
+            <div id="editPlatrormModal" class="modal" aria-hidden="true" style="display:none;">
+                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="epTitle">
+                    <button class="modal-close" aria-label="Close">&times;</button>
+                    <h3 id="editPlatrormTitle">Edit <span id="platformNameTitle"></span></h3>
+                    <form id="editPlatformForm">
+                    <input type="hidden" name="platform_id" id="platformId" value="">
+                    <input type="text" name="platform_name" id="platformName" value="">
+                    <input type="text" name="platform_description" id="platformDescription" value="">
+                    <input type="text" name="platform_link" id="platformLink" value="">
+                    <input type="number" name="platform_numberC" id="platformNumberC" value="">
+                    <input type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
+                    
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-submit btns">Edit</button>
+                        <button type="button" class="btn-cancel btns">Cancel</button>
+                    </div>
+                    </form>
+                <div id="epMsg" style="display:none;margin-top:8px;"></div>
+            </div> 
         </main>
     </div>
 </body>
