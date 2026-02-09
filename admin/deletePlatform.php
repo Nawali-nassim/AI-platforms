@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../connectDB.php";
-if(isset($_SESSION['admin-id']) && $_SESSION['admin-id'] > 0) {
+if(isset($_SESSION['admin_id']) && $_SESSION['admin_id'] > 0) {
    if (isset($_POST['id'])) {
     $platformId = intval($_POST['id']);
     $sql = "DELETE FROM platforms WHERE idP = ?";

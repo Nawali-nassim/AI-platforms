@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
 
- document.querySelectorAll('.deleteIcon').forEach(icon => {
+ document.querySelectorAll('.deletePlatform').forEach(icon => {
     icon.addEventListener('click', function() {
-        let platformId = this.getAttribute('data-id');
-        //using ajax to send the request to favorite.php:
+        let platformId = this.dataset.id;
+        //using ajax to send the request to deletePlatform.php:
         fetch('deletePlatform.php', {//options
             method: 'POST',
             headers: {
@@ -86,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
       epMsg.textContent = txt;
       // optionally close the model after success
     })
-    .catch(err => {
+    /*.catch(err => {
       epMsg.style.display = 'block';
       epMsg.textContent = 'Error sending feedback';
-    });
+    });*/
   });
 
 });

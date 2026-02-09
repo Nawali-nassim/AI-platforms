@@ -43,7 +43,7 @@
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td>".$row["idP"]."</td>
                                 <td>".$row["name"]."
-                                    <button class='deletePlatform'><i class='deleteIcon fa-regular fa-trash-can' data-id='".htmlspecialchars($row["idP"])."'></i></button>
+                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idP"])."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
                                     <button class='editPlatform'
                                             data-id='".$row["idP"]."'
                                             data-name='".$row["name"]."'
