@@ -1,1 +1,4 @@
 connectDB.php
+insertDataToDB.php
+.env
+*.env
