@@ -25,6 +25,10 @@
             </ul>
         </aside>
         <main class="main">
+            <div class="table-header">
+                <h1>Platforms table:</h1>
+                <button id="addPlatformBtn" class="btn-add"><i class="fa-solid fa-plus"></i> Add Platform</button>
+            </div>
             <?php
                 include '../connectDB.php';
                 $sql = "SELECT * FROM platforms";
@@ -43,7 +47,7 @@
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td>".$row["idP"]."</td>
                                 <td>".$row["name"]."
-                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idP"])."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
+                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idP"])."' data-name='".$row["name"]."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
                                     <button class='editPlatform'
                                             data-id='".$row["idP"]."'
                                             data-name='".$row["name"]."'
@@ -68,10 +72,20 @@
 
                 $con->close();
             ?>
-            <div id="editPlatrormModal" class="modal" aria-hidden="true" style="display:none;">
+            <div id="deletePlatformModal" class="modal" aria-hidden="true" style="display:none;">
+                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dpTitle">
+                    <button class="Dmodal-close" aria-label="Close">&times;</button>
+                    <h3>are you sure you wanna delete <span id="deletePlatformNameTitle"></span>?</h3>
+                    <div class="modal-actions">
+                        <button class="btn-delete btns">yes</button>
+                        <button type="button" class="Dbtn-cancel btn-cancel btns">Cancel</button>
+                    </div>
+                    <div id="dpMsg" class="verification-message" style="display:none;margin-top:8px;"></div>
+            </div>
+            <div id="editPlatformModal" class="modal" aria-hidden="true" style="display:none;">
                 <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="epTitle">
                     <button class="modal-close" aria-label="Close">&times;</button>
-                    <h3 id="editPlatrormTitle">Edit <span id="platformNameTitle"></span></h3>
+                    <h3 id="editPlatformTitle">Edit <span id="platformNameTitle"></span></h3>
                     <form id="editPlatformForm">
                     <input type="hidden" name="platform_id" id="platformId" value="">
                     <input type="text" name="platform_name" id="platformName" value="">
@@ -79,6 +93,7 @@
                     <input type="text" name="platform_link" id="platformLink" value="">
                     <input type="number" name="platform_numberC" id="platformNumberC" value="">
                     <input type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
+                    <label for="fileName">file name</label><span id="fileName"></span>
                     
                     <div class="modal-actions">
                         <button type="submit" class="btn-submit btns">Edit</button>

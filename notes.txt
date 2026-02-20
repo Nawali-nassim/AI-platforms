@@ -5,7 +5,7 @@
         slidbar contains:
             statistics >under each one manage button
             manage platforms:add, delete, edit (name ,description, category,icons ,link)
-            manage categories:add ,delete ,edit (name ,description,platforms)
+            manage categories:'''''add ''''',delete ,edit (name ,description,platforms)
             review feedback: reply to it
             add admin 
             profile

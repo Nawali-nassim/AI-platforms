@@ -135,6 +135,29 @@ tr:nth-child(even) {background-color: #f2f2f2;}
   gap:10px;
   margin-top:8px;
 }
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
 @media (max-width: 780px) {
     .statistics{
         flex-direction: column;
