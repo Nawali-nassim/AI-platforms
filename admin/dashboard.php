@@ -17,7 +17,7 @@
             <ul>
                 <li><i class="fa-solid fa-chart-pie"></i><a href="dashboard.php">statistics</a></li>
                 <li><i class="fa-solid fa-pen-to-square"></i><a href="managePlatforms.php">manage platforms</a></li>
-                <li><i class="fa-solid fa-pen-to-square"></i>manage categories</li>
+                <li><i class="fa-solid fa-pen-to-square"></i><a href="manageCategories.php">manage categories</a></li>
                 <li><i class="fa-solid fa-comments"></i>review feedback</li>
                 <li><i class="fa-solid fa-plus"></i>add admin</li>
                 <li><i class="fa-solid fa-eye"></i><a href="../index.php" target="_blank">show the site</a> </li>

@@ -26,12 +26,12 @@
         </aside>
         <main class="main" id="pageContent" >
             <div class="table-header">
-                <h1>Platforms table:</h1>
-                <button id="addPlatformBtn" class="btn-add"><i class="fa-solid fa-plus"></i> Add Platform</button>
+                <h1>Categories table:</h1>
+                <button id="addCategoryBtn" class="btn-add"><i class="fa-solid fa-plus"></i> Add Category</button>
             </div>
             <?php
                 include '../connectDB.php';
-                $sql = "SELECT * FROM platforms";
+                $sql = "SELECT * FROM categories";
                 $result = $con->query($sql);
                 if ($result->num_rows > 0) {
                     echo "<table class='platforms-table'>
@@ -39,30 +39,21 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>link</th>
-                                <th>id category</th>
-                                <th>icon</th>
                             </tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>".$row["idP"]."</td>
+                        echo "<tr><td>".$row["idC"]."</td>
                                 <td>".$row["name"]."
-                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idP"])."' data-name='".$row["name"]."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
-                                    <button class='editPlatform'
-                                            data-id='".$row["idP"]."'
+                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idC"])."' data-name='".$row["name"]."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
+                                    <button class='editCategory'
+                                            data-id='".$row["idC"]."'
                                             data-name='".$row["name"]."'
                                             data-description='".$row["description"]."'
-                                            data-link='".$row["link"]."'
-                                            data-idCategory='".$row["idCategory"]."'
-                                            data-icon='".$row["icon"]."'
                                             >
-                                        <i class='ediIcon fa-regular fa-pen-to-square' data-id='".htmlspecialchars($row["idP"])."'></i>
+                                        <i class='ediIcon fa-regular fa-pen-to-square' data-id='".htmlspecialchars($row["idC"])."'></i>
                                     </button>
                                 </td>
                                 <td> ".$row["description"]."</td>
-                                <td>".$row["link"]."</td>
-                                <td>".$row["idCategory"]."</td>
-                                <td>".$row["icon"]."</td>
                             </tr>";
                     }
                 echo "</table>";
@@ -78,7 +69,7 @@
                 <button class="Dmodal-close" aria-label="Close">&times;</button>
                 <h3>are you sure you wanna delete <span id="deletePlatformNameTitle"></span>?</h3>
                 <div class="modal-actions">
-                    <button class="btn-delete btns">yes</button>
+                    <button class="btn-delete btns"data-type="category">yes</button>
                     <button type="button" class="Dbtn-cancel btn-cancel btns">Cancel</button>
                 </div>
                 <div id="dpMsg" class="verification-message" style="display:none;margin-top:8px;">
@@ -91,13 +82,8 @@
                 <h3 id="editPlatformTitle"></h3>
                 <form id="editPlatformForm">
                 <input type="hidden" name="platform_id" id="platformId" value="">
-                <label for="platformName">Platform Name: </label><input type="text" name="platform_name" id="platformName" value="">
-                <label for="platformDescription">Platform Description: </label><input type="text" name="platform_description" id="platformDescription" value="">
-                <label for="platformLink">Platform Link: </label><input type="text" name="platform_link" id="platformLink" value="">
-                <label for="platformNumberC">Platform Number of Categories: </label><input type="number" name="platform_numberC" id="platformNumberC" value="">
-                <label for="platformIcon">Platform Icon: </label><input type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
-                <br>
-                <span id="fileName"></span>
+                <label for="categoryName">Category Name: </label><input type="text" name="category_name" id=" categoryName" value="">
+                <label for="categoryDescription">Category Description: </label><input type="text" name="category_description" id="categoryDescription" value="">
                 
                 <div class="modal-actions">
                     <button type="submit" class="btn-submit btns">Save</button>

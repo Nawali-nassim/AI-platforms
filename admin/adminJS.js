@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/x-www-form-urlencoded'
                 //to send data in URL-encoded format eg: id=1&action=add ,can be json too
             },
-            body: 'id=' + platformId  //the content of the POST request
+            body: 'id=' + platformId + '&type=' + this.dataset.type //the content of the POST request
         })
         .then(response => response.text())//get the response as text from the server
         .then(data => {
@@ -189,4 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       console.error('ERROR: editPlatformForm not found');
     }
+    //delete category modal functionality-----------------------------------------------------------------------------------------------
+
 });

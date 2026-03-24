@@ -101,6 +101,7 @@ li a:hover {
     padding: 12px;
     text-align: center;
 }
+/* Add a background color to even rows */
 tr:nth-child(even) {background-color: #f2f2f2;}
 .modal{
   position:fixed;
