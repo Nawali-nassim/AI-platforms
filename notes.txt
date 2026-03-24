@@ -1,6 +1,5 @@
 -get the images of the platforms
 -create the admin page
-    log in 
     dashboard:
         slidbar contains:
             statistics >under each one manage button

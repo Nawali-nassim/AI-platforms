@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin dashboard</title>
-        <script src="https://kit.fontawesome.com/3aca1396eb.js" crossorigin="anonymous"></script>
-        <script src="adminJS.js"></script>
+    <script src="https://kit.fontawesome.com/3aca1396eb.js" crossorigin="anonymous"></script>
+    <script src="adminJS.js"></script>
     <link rel="stylesheet" href="admin.css"></head>
 <body>
    <div class="admin-layout">
@@ -24,7 +24,7 @@
                 <li><i class="fa-solid fa-user-tie"></i>profile</li>
             </ul>
         </aside>
-        <main class="main">
+        <main class="main" id="pageContent" >
             <div class="table-header">
                 <h1>Platforms table:</h1>
                 <button id="addPlatformBtn" class="btn-add"><i class="fa-solid fa-plus"></i> Add Platform</button>
@@ -72,37 +72,42 @@
 
                 $con->close();
             ?>
-            <div id="deletePlatformModal" class="modal" aria-hidden="true" style="display:none;">
-                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dpTitle">
-                    <button class="Dmodal-close" aria-label="Close">&times;</button>
-                    <h3>are you sure you wanna delete <span id="deletePlatformNameTitle"></span>?</h3>
-                    <div class="modal-actions">
-                        <button class="btn-delete btns">yes</button>
-                        <button type="button" class="Dbtn-cancel btn-cancel btns">Cancel</button>
-                    </div>
-                    <div id="dpMsg" class="verification-message" style="display:none;margin-top:8px;"></div>
-            </div>
-            <div id="editPlatformModal" class="modal" aria-hidden="true" style="display:none;">
-                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="epTitle">
-                    <button class="modal-close" aria-label="Close">&times;</button>
-                    <h3 id="editPlatformTitle">Edit <span id="platformNameTitle"></span></h3>
-                    <form id="editPlatformForm">
-                    <input type="hidden" name="platform_id" id="platformId" value="">
-                    <input type="text" name="platform_name" id="platformName" value="">
-                    <input type="text" name="platform_description" id="platformDescription" value="">
-                    <input type="text" name="platform_link" id="platformLink" value="">
-                    <input type="number" name="platform_numberC" id="platformNumberC" value="">
-                    <input type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
-                    <label for="fileName">file name</label><span id="fileName"></span>
-                    
-                    <div class="modal-actions">
-                        <button type="submit" class="btn-submit btns">Edit</button>
-                        <button type="button" class="btn-cancel btns">Cancel</button>
-                    </div>
-                    </form>
-                <div id="epMsg" style="display:none;margin-top:8px;"></div>
-            </div> 
         </main>
+        <div id="deletePlatformModal" class="modal" aria-hidden="true" style="display:none;">
+            <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dpTitle">
+                <button class="Dmodal-close" aria-label="Close">&times;</button>
+                <h3>are you sure you wanna delete <span id="deletePlatformNameTitle"></span>?</h3>
+                <div class="modal-actions">
+                    <button class="btn-delete btns">yes</button>
+                    <button type="button" class="Dbtn-cancel btn-cancel btns">Cancel</button>
+                </div>
+                <div id="dpMsg" class="verification-message" style="display:none;margin-top:8px;">
+                </div>
+            </div>
+        </div>  
+        <div id="editPlatformModal" class="modal" aria-hidden="true" style="display:none;">
+            <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="epTitle">
+                <button class="modal-close" aria-label="Close">&times;</button>
+                <h3 id="editPlatformTitle"></h3>
+                <form id="editPlatformForm">
+                <input type="hidden" name="platform_id" id="platformId" value="">
+                <label for="platformName">Platform Name: </label><input type="text" name="platform_name" id="platformName" value="">
+                <label for="platformDescription">Platform Description: </label><input type="text" name="platform_description" id="platformDescription" value="">
+                <label for="platformLink">Platform Link: </label><input type="text" name="platform_link" id="platformLink" value="">
+                <label for="platformNumberC">Platform Number of Categories: </label><input type="number" name="platform_numberC" id="platformNumberC" value="">
+                <label for="platformIcon">Platform Icon: </label><input type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
+                <br>
+                <span id="fileName"></span>
+                
+                <div class="modal-actions">
+                    <button type="submit" class="btn-submit btns">Save</button>
+                    <button type="button" class="btn-cancel btns">Cancel</button>
+                </div>
+                </form>
+                <div id="epMsg" style="display:none;margin-top:8px;">
+                </div>
+            </div>
+        </div> 
     </div>
 </body>
 </html>
