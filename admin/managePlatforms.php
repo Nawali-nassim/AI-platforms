@@ -47,15 +47,19 @@
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td>".$row["idP"]."</td>
                                 <td>".$row["name"]."
-                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idP"])."' data-name='".$row["name"]."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
-                                    <button class='editPlatform'
+                                    <button class='deletePlatform icon-btn-d icon-btn' 
+                                        data-id='".htmlspecialchars($row["idP"])."' 
+                                        data-name='".$row["name"]."'>b
+                                        <i class='deleteIcon fa-regular fa-trash-can' ></i>
+                                    </button>
+                                    <button class='editPlatform icon-btn icon-btn-e'
                                             data-id='".$row["idP"]."'
                                             data-name='".$row["name"]."'
                                             data-description='".$row["description"]."'
                                             data-link='".$row["link"]."'
                                             data-idCategory='".$row["idCategory"]."'
                                             data-icon='".$row["icon"]."'
-                                            >
+                                            >n
                                         <i class='ediIcon fa-regular fa-pen-to-square' data-id='".htmlspecialchars($row["idP"])."'></i>
                                     </button>
                                 </td>
@@ -75,7 +79,7 @@
         </main>
         <div id="deletePlatformModal" class="modal" aria-hidden="true" style="display:none;">
             <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dpTitle">
-                <button class="Dmodal-close" aria-label="Close">&times;</button>
+                <button class="Dmodal-close modal-close" aria-label="Close">&times;</button>
                 <h3>are you sure you wanna delete <span id="deletePlatformNameTitle"></span>?</h3>
                 <div class="modal-actions">
                     <button class="btn-delete btns">yes</button>
@@ -88,14 +92,24 @@
         <div id="editPlatformModal" class="modal" aria-hidden="true" style="display:none;">
             <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="epTitle">
                 <button class="modal-close" aria-label="Close">&times;</button>
-                <h3 id="editPlatformTitle"></h3>
+                <h2 id="editPlatformTitle"></h2>
                 <form id="editPlatformForm">
                 <input type="hidden" name="platform_id" id="platformId" value="">
-                <label for="platformName">Platform Name: </label><input type="text" name="platform_name" id="platformName" value="">
-                <label for="platformDescription">Platform Description: </label><input type="text" name="platform_description" id="platformDescription" value="">
-                <label for="platformLink">Platform Link: </label><input type="text" name="platform_link" id="platformLink" value="">
-                <label for="platformNumberC">Platform Number of Categories: </label><input type="number" name="platform_numberC" id="platformNumberC" value="">
-                <label for="platformIcon">Platform Icon: </label><input type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
+
+                <label class="labels" for="platformName">Platform Name: </label>
+                <input class="inputs" type="text" name="platform_name" id="platformName" value="">
+
+                <label class="labels" for="platformDescription">Platform Description: </label>
+                <textarea  class="inputs" name="platform_description" id="platformDescription"></textarea>
+
+                <label class="labels" for="platformLink">Platform Link: </label>
+                <input class="inputs" type="text" name="platform_link" id="platformLink" value="">
+
+                <label class="labels" for="platformNumberC">Platform Number of Categories: </label>
+                <input class="inputs" type="number" name="platform_numberC" id="platformNumberC" value="">
+
+                <label class="labels" for="platformIcon">Platform Icon: </label>
+                <input  type="file" name="platform_icon" id="platformIcon" value="" accept="image/*">
                 <br>
                 <span id="fileName"></span>
                 

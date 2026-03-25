@@ -84,14 +84,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const editForm = document.getElementById('editPlatformForm');
     const closeBtn = modal.querySelector('.modal-close');
     const cancelBtn = modal.querySelector('.btn-cancel');
-    const addBtn = document.getElementById('addPlatformBtn');
+    const addPBtn = document.getElementById('addPlatformBtn');
+    const addCBtn =document.getElementById('addCategoryBtn');
 
-    let mode='edit';
+    let mode='edit-platform';
 
     function openEdit(id, name, desc, link, numberC, icon) {
       closeAllModals();
       page.setAttribute('inert','');
-      mode='edit';
+      mode='edit-platform';
       pNameTitle.textContent = "Edit " + name;
       pName.value = name;
       pId.value = id;
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
       pLink.value = link;
       pNumberC.value = numberC;
       pIconName.textContent = icon ? 'file name : ' + icon : 'file name : there is no icon';
-      console.log('Opening edit modal for ID:', id, 'Name:', name);
+      console.log('Opening edit platform modal for ID:', id, 'Name:', name);
       
       if(epMsg) epMsg.style.display = 'none';
       modal.setAttribute("aria-hidden", "false");
@@ -118,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         pLink.value = '';
         pIcon.value = '';
         pIconName.textContent = 'Choose icon';
-        console.log('Opening add modal');
+        console.log('Opening add platform modal');
 
         if(epMsg) epMsg.style.display = 'none';
         modal.setAttribute("aria-hidden", "false");
@@ -126,6 +127,37 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => pName.focus(), 0);
       }
 
+    function openEditC (id, name, desc){
+      closeAllModals();
+      page.setAttribute('inert','');
+      mode='edit-category';
+      pNameTitle.textContent = "Edit " + name;
+      pName.value = name;
+      pId.value = id;
+      pText.value = desc;
+      console.log('Opening edit category modal for ID:', id, 'Name:', name);
+
+      if(epMsg) epMsg.style.display = 'none';
+      modal.setAttribute("aria-hidden", "false");
+      modal.style.display = 'flex';
+      setTimeout(() => pName.focus(), 0);
+    }
+
+    function openAddC() {
+        closeAllModals();
+        page.setAttribute('inert','');
+        mode='add-category';
+        pNameTitle.textContent = 'Add new category';
+        pName.value = '';
+        pId.value = '';
+        pText.value = '';
+        console.log('Opening add category modal');
+
+        if(epMsg) epMsg.style.display = 'none';
+        modal.setAttribute("aria-hidden", "false");
+        modal.style.display = 'flex';
+        setTimeout(() => pName.focus(), 0);
+      }
     function closeModal() {
       modal.style.display = 'none';
       modal.setAttribute('aria-hidden', 'true');
@@ -143,30 +175,46 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
+    document.querySelectorAll('.editCategory').forEach(btn => {
+      btn.addEventListener('click', function () {
+        openEditC(this.dataset.id, this.dataset.name, this.dataset.description);
+      });
+    });
+
     // Add platform functionality
-    if(addBtn) {
-      addBtn.addEventListener('click', openAdd);
+    if(addPBtn) {
+      addPBtn.addEventListener('click', openAdd);
     } else {
       console.error('ERROR: addPlatformBtn not found');
     }
 
+    if(addCBtn) {
+      addCBtn.addEventListener('click', openAddC);
+    } else {
+      console.error('ERROR: addPlatformBtn not found');
+    }
     // One submit handler for both add and edit
     if(editForm) {
       editForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        var fileName=(mode === 'edit-category' || mode === 'add-category')? 'edit&addCategory.php':'editPlatform.php';
         const formData = new FormData();
         formData.append('action', mode); // 'edit' or 'add'
-        if(mode === 'edit') {
+
+        if(mode === 'edit-platform' || mode === 'edit-category') {
           formData.append('platform_id', pId.value);
         }
         formData.append('platform_name', pName.value);
         formData.append('platform_description', pText.value);
-        formData.append('platform_link', pLink.value);
-        formData.append('platform_numberC', pNumberC.value);
+
+        if(mode === 'edit-platform' || mode === 'add-platform') {
+            formData.append('platform_link', pLink.value);
+            formData.append('platform_numberC', pNumberC.value);
+        }
         if(pIcon.files.length > 0){
             formData.append('platform_icon', pIcon.files[0]);
         }
-        fetch('editPlatform.php', {
+        fetch(fileName, {
           method: 'POST',
           body: formData
         })

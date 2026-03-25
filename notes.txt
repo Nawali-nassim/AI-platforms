@@ -8,7 +8,7 @@
             review feedback: reply to it
             add admin 
             profile
-
+edit labels on modals in manage category page
 
 -learn from the new log in file in test 
 -enhance the design

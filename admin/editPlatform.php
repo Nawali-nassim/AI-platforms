@@ -8,7 +8,7 @@ if(isset($_SESSION['admin_id']) && $_SESSION['admin_id'] > 0) {
         $url = trim($_POST['platform_link']);
         $categoryId = intval($_POST['platform_numberC']);
 
-        if($_POST['action']==='edit'){
+        if($_POST['action']==='edit-platform'){
             $platformId = intval($_POST['platform_id']);
 
             if(isset($_FILES['platform_icon']) && $_FILES['platform_icon']['error'] === 0) {

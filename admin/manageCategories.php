@@ -44,12 +44,16 @@
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td>".$row["idC"]."</td>
                                 <td>".$row["name"]."
-                                    <button class='deletePlatform' data-id='".htmlspecialchars($row["idC"])."' data-name='".$row["name"]."'>de<i class='deleteIcon fa-regular fa-trash-can' ></i></button>
-                                    <button class='editCategory'
+                                    <button class='deletePlatform icon-btn-d icon-btn'
+                                        data-id='".htmlspecialchars($row["idC"])."'
+                                        data-name='".$row["name"]."'>de
+                                        <i class='deleteIcon fa-regular fa-trash-can' ></i>
+                                    </button>
+                                    <button class='editCategory icon-btn icon-btn-e'
                                             data-id='".$row["idC"]."'
                                             data-name='".$row["name"]."'
                                             data-description='".$row["description"]."'
-                                            >
+                                            >n
                                         <i class='ediIcon fa-regular fa-pen-to-square' data-id='".htmlspecialchars($row["idC"])."'></i>
                                     </button>
                                 </td>
@@ -66,7 +70,7 @@
         </main>
         <div id="deletePlatformModal" class="modal" aria-hidden="true" style="display:none;">
             <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dpTitle">
-                <button class="Dmodal-close" aria-label="Close">&times;</button>
+                <button class="Dmodal-close modal-close" aria-label="Close">&times;</button>
                 <h3>are you sure you wanna delete <span id="deletePlatformNameTitle"></span>?</h3>
                 <div class="modal-actions">
                     <button class="btn-delete btns"data-type="category">yes</button>
@@ -81,10 +85,14 @@
                 <button class="modal-close" aria-label="Close">&times;</button>
                 <h3 id="editPlatformTitle"></h3>
                 <form id="editPlatformForm">
-                <input type="hidden" name="platform_id" id="platformId" value="">
-                <label for="categoryName">Category Name: </label><input type="text" name="category_name" id=" categoryName" value="">
-                <label for="categoryDescription">Category Description: </label><input type="text" name="category_description" id="categoryDescription" value="">
-                
+                <input class="inputs" type="hidden" name="platform_id" id="platformId" value="">
+
+                <label class="labels" for="platformName">Platform Name: </label>
+                <input class="inputs" type="text" name="platform_name" id="platformName" value="">
+
+                <label class="labels" for="platformDescription">Platform Description: </label>
+                <textarea  class="inputs" name="platform_description" id="platformDescription"></textarea>
+   
                 <div class="modal-actions">
                     <button type="submit" class="btn-submit btns">Save</button>
                     <button type="button" class="btn-cancel btns">Cancel</button>
