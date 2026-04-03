@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     debtn.addEventListener('click', function() {
         let platformId = currentDeleteId; // use the stored ID
         //using ajax to send the request to deletePlatform.php:
-        fetch('deletePlatform.php', {//options
+        fetch('deletePlatform&Category.php', {//options
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -67,8 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  if (deleteModal) {
   deleteModal.querySelector('.Dmodal-close').addEventListener('click', closeModalD);
   deleteModal.querySelector('.Dbtn-cancel').addEventListener('click', closeModalD);
+  }
 
 // edit/add platform modal functionality-----------------------------------------------------------------------------------------------
     const modal = document.getElementById('editPlatformModal');
@@ -184,8 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add platform functionality
     if(addPBtn) {
       addPBtn.addEventListener('click', openAdd);
-    } else {
-      console.error('ERROR: addPlatformBtn not found');
     }
 
     if(addCBtn) {
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(editForm) {
       editForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        var fileName=(mode === 'edit-category' || mode === 'add-category')? 'edit&addCategory.php':'editPlatform.php';
+        var fileName=(mode === 'edit-category' || mode === 'add-category')? 'edit&addCategory.php':'edit&addPlatform.php';
         const formData = new FormData();
         formData.append('action', mode); // 'edit' or 'add'
 
@@ -211,8 +211,10 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('platform_link', pLink.value);
             formData.append('platform_numberC', pNumberC.value);
         }
-        if(pIcon.files.length > 0){
-            formData.append('platform_icon', pIcon.files[0]);
+        if(pIcon){
+          if(pIcon.files.length > 0){
+              formData.append('platform_icon', pIcon.files[0]);
+          }
         }
         fetch(fileName, {
           method: 'POST',
@@ -237,6 +239,4 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       console.error('ERROR: editPlatformForm not found');
     }
-    //delete category modal functionality-----------------------------------------------------------------------------------------------
-
 });
