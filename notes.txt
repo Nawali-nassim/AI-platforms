@@ -9,6 +9,9 @@
             add admin 
             profile
             
+review edit&addCategory.php 
+why cannot add platform 
+
 -learn from the new log in file in test 
 -enhance the design
 dark mode
