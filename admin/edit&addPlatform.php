@@ -2,7 +2,7 @@
 session_start();
 include "../connectDB.php";
 if(isset($_SESSION['admin_id']) && $_SESSION['admin_id'] > 0) {
-   if(isset($_POST['platform_name']) || isset($_POST['platform_description']) || isset($_POST['platform_link']) || isset($_POST['platform_numberC']) || isset($_FILES['platform_icon']) ) {
+   if(isset($_POST['platform_name']) && isset($_POST['platform_description']) && isset($_POST['platform_link']) && isset($_POST['platform_numberC']) && isset($_FILES['platform_icon']) ) {
         $name = trim($_POST['platform_name']);
         $description = trim($_POST['platform_description']);
         $url = trim($_POST['platform_link']);

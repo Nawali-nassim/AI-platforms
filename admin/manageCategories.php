@@ -88,10 +88,10 @@
                 <input class="inputs" type="hidden" name="platform_id" id="platformId" value="">
 
                 <label class="labels" for="platformName" >Category Name: </label>
-                <input class="inputs" type="text" name="platform_name" id="platformName" value="">
+                <input class="inputs" type="text" name="platform_name" id="platformName" value="" required>
 
                 <label class="labels" for="platformDescription">Category Description: </label>
-                <textarea  class="inputs" name="platform_description" id="platformDescription"></textarea>
+                <textarea  class="inputs" name="platform_description" id="platformDescription" required></textarea>
    
                 <div class="modal-actions">
                     <button type="submit" class="btn-submit btns">Save</button>

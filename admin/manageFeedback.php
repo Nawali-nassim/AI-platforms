@@ -5,64 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin dashboard</title>
     <script src="https://kit.fontawesome.com/3aca1396eb.js" crossorigin="anonymous"></script>
-    <script >
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-              const page = document.getElementById('pageContent');  
-
-        const deFeedModal = document.getElementById('deleteFeedbackModal');
-    const dfMsg =document.getElementById('dfMsg');
-    let cfeedbackId = null;
-
-    function openModalDFeed(id) {
-      deFeedModal.style.display = 'flex';
-          deFeedModal.setAttribute('aria-hidden', 'false');
-          page.setAttribute('inert','');
-          cfeedbackId = id;
-    }
-          
-    function closeModalDFeed() {
-      deFeedModal.style.display = 'none';
-      deFeedModal.setAttribute('aria-hidden', 'true');
-      page.removeAttribute('inert');
-      cfeedbackId = null;
-    }
-    document.querySelectorAll('.deleteFeedback').forEach(icon => {
-        icon.addEventListener('click', function() {
-          openModalDFeed(this.dataset.id)
-    })});
-    
-    
-    document.querySelectorAll('.btn-deleteFeed').forEach(dfbtn => {
-    dfbtn.addEventListener('click', function() {
-        let feedbackId = cfeedbackId;
-        //using ajax to send the request to deletePlatform.php:
-        fetch('deleteFeedback.php', {//options
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-                //to send data in URL-encoded format eg: id=1&action=add ,can be json too
-            },
-            body: 'id=' + feedbackId  //the content of the POST request
-        })
-        .then(response => response.text())//get the response as text from the server
-        .then(data => {
-            console.log(data);
-            if(dfMsg) {
-              dfMsg.textContent = data;
-              dfMsg.style.display = 'block';
-            } else {
-              alert(data); // fallback if element doesn't exist
+            const page = document.getElementById('pageContent');  
+            const deFeedModal = document.getElementById('deleteFeedbackModal');
+            const dfMsg =document.getElementById('dfMsg');
+            let cfeedbackId = null;
+            //delete functionality----------------------------------------------------------------------------------------------
+            function openModalDFeed(id) {
+                deFeedModal.style.display = 'flex';
+                deFeedModal.setAttribute('aria-hidden', 'false');
+                page.setAttribute('inert','');
+                cfeedbackId = id;
             }
-            // close modal after a short delay on success
-            setTimeout(() => closeModalD(), 1500);
-        });
-        console.log('Delete feedback with ID:', feedbackId);
-    });
-  });
-  if(deFeedModal){
-    deFeedModal.querySelector('.DFmodal-close').addEventListener('click', closeModalDFeed);
-    deFeedModal.querySelector('.DFbtn-cancel').addEventListener('click', closeModalDFeed);
-  } 
+                
+            function closeModalDFeed() {
+                deFeedModal.style.display = 'none';
+                deFeedModal.setAttribute('aria-hidden', 'true');
+                page.removeAttribute('inert');
+                cfeedbackId = null;
+            }
+            document.querySelectorAll('.deleteFeedback').forEach(icon => {
+                icon.addEventListener('click', function() {
+                openModalDFeed(this.dataset.id)
+            })});
+            
+            document.querySelectorAll('.btn-deleteFeed').forEach(dfbtn => {
+                dfbtn.addEventListener('click', function() {
+                    let feedbackId = cfeedbackId;
+                    //using ajax to send the request to deletePlatform.php:
+                    fetch('deleteFeedback.php', {//options
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                            //to send data in URL-encoded format eg: id=1&action=add ,can be json too
+                        },
+                        body: 'id=' + feedbackId  //the content of the POST request
+                    })
+                    .then(response => response.text())//get the response as text from the server
+                    .then(data => {
+                        console.log(data);
+                        if(dfMsg) {
+                        dfMsg.textContent = data;
+                        dfMsg.style.display = 'block';
+                        } else {
+                        alert(data); // fallback if element doesn't exist
+                        }
+                        // close modal after a short delay on success
+                        setTimeout(() => closeModalDFeed(), 1500);
+                    });
+                });
+            });
+            if(deFeedModal){
+                deFeedModal.querySelector('.DFmodal-close').addEventListener('click', closeModalDFeed);
+                deFeedModal.querySelector('.DFbtn-cancel').addEventListener('click', closeModalDFeed);
+            }
+            //change status functionality---------------------------------------------------------------------------------------
+            document.querySelectorAll('.statusSelect').forEach(statusSlct => {
+                statusSlct.addEventListener('change', (e) => {
+                    var newStatus = e.target.value;
+                    let feedbackId = e.target.dataset.id;
+                    console.log('Selected status: ' + newStatus + ' for feedback ID: ' + feedbackId);
+                    // Send AJAX request to update status
+                    fetch('updateFeedbackStatus.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: 'id=' + feedbackId + '&status=' + newStatus
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log(data);
+                        // Optionally show a message or update the UI based on the response
+                    });
+                });
+            });
         });
     </script>
     <link rel="stylesheet" href="admin.css"></head>
@@ -94,7 +112,7 @@
                             feedbacks.feedback,
                             platforms.name AS platform_name,
                             feedbacks.dateSended,
-                            feedbacks.state
+                            feedbacks.status
                         FROM feedbacks
                         JOIN platforms ON feedbacks.idPlatform = platforms.idP;";
                 $result = $con->query($sql);
@@ -105,26 +123,26 @@
                                 <th>Feedback</th>
                                 <th>Platform name</th>
                                 <th>date sended</th>
-                                <th>state</th>
+                                <th>status</th>
                             </tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>
-                                <td>".$row["idFeed"]."
+                                <td>".$row["idFeed"]."</td>
+                                <td>".$row["feedback"]."
                                     <button class='deleteFeedback icon-btn-d icon-btn' 
                                         data-id='".htmlspecialchars($row["idFeed"])."'>b
                                         <i class='deleteIcon fa-regular fa-trash-can' ></i>
                                     </button>
                                 </td>
-                                <td>".$row["feedback"]."</td>
                                 <td> ".$row["platform_name"]."</td>
                                 <td>".$row["dateSended"]."</td>
-                                <td>".$row["state"]." <br><br>
-                                change status to :
-                                    <select>
-                                        <option>not reviewed</option>
-                                        <option>in progress</option>
-                                        <option>done</option>
+                                <td>".$row["status"]." <br><br>
+                                <label for='status'>change status to :</label>
+                                    <select name='status' class='statusSelect' id='status' data-id='".htmlspecialchars($row["idFeed"])."'>
+                                        <option value='not_reviewed' >not reviewed</option>
+                                        <option value = 'in_progress'>in progress</option>
+                                        <option value='done'>done</option>
                                     </select>
                                 </td>
                             </tr>";

@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function openAdd() {
         closeAllModals();
         page.setAttribute('inert','');
-        mode='add';
+        mode='add-platform';
         pNameTitle.textContent = 'Add new platform';
         pName.value = '';
         pId.value = '';
@@ -186,12 +186,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add platform functionality
     if(addPBtn) {
       addPBtn.addEventListener('click', openAdd);
+    }else{
+      console.error('ERROR: addPlatformBtn not found');
     }
 
     if(addCBtn) {
       addCBtn.addEventListener('click', openAddC);
     } else {
-      console.error('ERROR: addPlatformBtn not found');
+      console.error('ERROR: addCategoryBtn not found');
     }
     // One submit handler for both add and edit
     if(editForm) {

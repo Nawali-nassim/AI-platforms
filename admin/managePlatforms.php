@@ -118,7 +118,7 @@
                     <button type="button" class="btn-cancel btns">Cancel</button>
                 </div>
                 </form>
-                <div id="epMsg" style="display:none;margin-top:8px;">
+                <div id="epMsg" style="display:none;margin-top:8px;background-color:#f8d7da;color:#721c24;padding:8px;border-radius:4px;">
                 </div>
             </div>
         </div> 
