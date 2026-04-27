@@ -19,7 +19,7 @@
                 <li><i class="fa-solid fa-pen-to-square"></i><a href="managePlatforms.php">manage platforms</a></li>
                 <li><i class="fa-solid fa-pen-to-square"></i><a href="manageCategories.php">manage categories</a></li>
                 <li><i class="fa-solid fa-comments"></i><a href="manageFeedback.php">review feedback</a></li>
-                <li><i class="fa-solid fa-plus"></i>add admin</li>
+                <li><i class="fa-solid fa-plus"></i><a href="manageAdmin.php">add admin</a></li>
                 <li><i class="fa-solid fa-eye"></i><a href="../index.php" target="_blank">show the site</a> </li>
                 <li><i class="fa-solid fa-user-tie"></i>profile</li>
             </ul>
@@ -85,18 +85,18 @@
                 <button class="modal-close" aria-label="Close">&times;</button>
                 <h3 id="editPlatformTitle"></h3>
                 <form id="editPlatformForm">
-                <input class="inputs" type="hidden" name="platform_id" id="platformId" value="">
+                    <input class="inputs" type="hidden" name="platform_id" id="platformId" value="">
 
-                <label class="labels" for="platformName" >Category Name: </label>
-                <input class="inputs" type="text" name="platform_name" id="platformName" value="" required>
+                    <label class="labels" for="platformName" >Category Name: </label>
+                    <input class="inputs" type="text" name="platform_name" id="platformName" value="" required>
 
-                <label class="labels" for="platformDescription">Category Description: </label>
-                <textarea  class="inputs" name="platform_description" id="platformDescription" required></textarea>
-   
-                <div class="modal-actions">
-                    <button type="submit" class="btn-submit btns">Save</button>
-                    <button type="button" class="btn-cancel btns">Cancel</button>
-                </div>
+                    <label class="labels" for="platformDescription">Category Description: </label>
+                    <textarea  class="inputs" name="platform_description" id="platformDescription" required></textarea>
+    
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-submit btns">Save</button>
+                        <button type="button" class="btn-cancel btns">Cancel</button>
+                    </div>
                 </form>
                 <div id="epMsg" style="display:none;margin-top:8px;">
                 </div>

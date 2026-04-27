@@ -167,10 +167,10 @@ mysqli_close($con);
                 <input class="inputs" type="password" id="current_pass" name="current_pass" placeholder="Enter current password" required>
 
                 <label class="labels" for="new_pass">New Password:</label>
-                <input class="inputs" type="password" id="new_pass" name="new_pass" placeholder="Enter new password" required>
+                <input class="inputs" type="password" id="new_pass" name="new_pass" placeholder="Enter new password" autocomplete="new-password" required>
 
                 <label class="labels" for="confirm_pass">Confirm New Password:</label>
-                <input class="inputs" type="password" id="confirm_pass" name="confirm_pass" placeholder="Confirm new password" required>
+                <input class="inputs" type="password" id="confirm_pass" name="confirm_pass" placeholder="Confirm new password" autocomplete="new-password" required>
 
                 <button type="submit" class="log-btn">Update Password</button>
             </form>

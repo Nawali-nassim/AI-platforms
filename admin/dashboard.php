@@ -19,7 +19,7 @@
                 <li><i class="fa-solid fa-pen-to-square"></i><a href="managePlatforms.php">manage platforms</a></li>
                 <li><i class="fa-solid fa-pen-to-square"></i><a href="manageCategories.php">manage categories</a></li>
                 <li><i class="fa-solid fa-comments"></i><a href="manageFeedback.php">review feedback</a></li>
-                <li><i class="fa-solid fa-plus"></i>add admin</li>
+                <li><i class="fa-solid fa-plus"></i><a href="manageAdmin.php">add admin</a></li>
                 <li><i class="fa-solid fa-eye"></i><a href="../index.php" target="_blank">show the site</a> </li>
                 <li><i class="fa-solid fa-user-tie"></i>profile</li>
             </ul>
